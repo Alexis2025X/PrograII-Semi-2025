@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.alexis.miprimeraplicacion"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.alexis.miprimeraplicacion"
