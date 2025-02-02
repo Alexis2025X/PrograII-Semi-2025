@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                          }
                          respuesta = fact;
                      }
-
                      tempVal.setText("Respuesta: " + respuesta);
                  }
 
