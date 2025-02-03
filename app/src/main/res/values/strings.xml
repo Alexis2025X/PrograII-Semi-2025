@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">miPrimeraAplicacion</string>
     <!--El name nos servira para llamarlo en el XML-->
-    <string-array name="opciones">
-        <item>Suma</item>
-        <item>Resta</item>
-        <item>Multiplicacion</item>
-        <item>Division</item>
-        <item>Exponenciación</item>
-        <item>Porcentaje</item>
-        <item>Raíz</item>
-        <item>Factorial</item>
+    <string-array name="monedas">
+        <item>Dolar</item>
+        <item>Euro</item>
+        <item>Quetzalez</item>
+        <item>Lempiras</item>
+        <item>Cordobas</item>
+        <item>Colon CR</item>
+        <item>Colon SV</item>
     </string-array>
 </resources>
