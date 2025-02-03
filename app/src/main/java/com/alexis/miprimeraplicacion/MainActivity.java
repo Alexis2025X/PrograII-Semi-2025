@@ -7,6 +7,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,27 +51,35 @@ public class MainActivity extends AppCompatActivity {
                 double respuesta = 0.0;
 
                 spn = findViewById(R.id.spnOpciones);
+                String msg = "";
                 switch (spn.getSelectedItemPosition()){
                     case 0:
                         respuesta = num1 + num2;
+                        msg = "La suma es: "+ respuesta;
                         break;
                     case 1:
                         respuesta = num1 - num2;
+                        msg = "La resta es: "+ respuesta;
                         break;
                     case 2:
                         respuesta = num1 * num2;
+                        msg = "La multiplicación es: "+ respuesta;
                         break;
                     case 3:
                         respuesta = num1 / num2;
+                        msg = "La division es: "+ respuesta;
                         break;
                     case 4:
                         respuesta = Math.pow(num1, num2);
+                        msg = "La exponenciación es: "+ respuesta;
                         break;
                     case 5:
                         respuesta = (num1 / num2) * 100;
+                        msg = "El porcentaje es: "+ respuesta;
                         break;
                     case 6:
                         respuesta = Math.pow(num2, 1.0 / num1);
+                        msg = "La raíz es: "+ respuesta;
                         break;
                     case 7:
                         double fact = 1;
@@ -78,11 +87,13 @@ public class MainActivity extends AppCompatActivity {
                             fact = fact * i;
                         }
                         respuesta = fact;
+                        msg = "El factorial es: "+ respuesta;
                         break;
 
                 }
                 tempVal = findViewById(R.id.lblRespuesta);
                 tempVal.setText("Respuesta: "+ respuesta);
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
             }
         });
     }
