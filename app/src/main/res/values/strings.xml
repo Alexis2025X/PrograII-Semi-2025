@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">MiPrimerAplicacion</string>
+    <string name="app_name">miPrimeraAplicacion</string>
+    <!--El name nos servira para llamarlo en el XML-->
+    <string-array name="opciones">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplicacion</item>
+        <item>Division</item>
+        <item>Exponenciación</item>
+        <item>Porcentaje</item>
+        <item>Raíz</item>
+        <item>Factorial</item>
+    </string-array>
 </resources>
