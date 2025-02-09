@@ -2,16 +2,46 @@
     <string name="app_name">miPrimeraAplicacion</string>
     <!--El name nos servira para llamarlo en el XML-->
     <!--El name nos servira para llamarlo en el XML-->
-    <string-array name="opciones">
-        <item>Suma</item>
-        <item>Resta</item>
-        <item>Multiplicacion</item>
-        <item>Division</item>
-        <item>Exponenciación</item>
-        <item>Porcentaje</item>
-        <item>Raíz</item>
-        <item>Factorial</item>
-        <item>Modulo</item>
-        <item>Numero mayor</item>
+    <string-array name="monedas">
+        <!--POR DEFINIR-->
+        <item>Dolar</item>
+        <item>Euro</item>
+        <item>Quetzalez</item>
+        <item>Lempiras</item>
+        <item>Cordobas</item>
+        <item>Colon CR</item>
+        <item>Colon SV</item>
     </string-array>
+
+    <string-array name="masa">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR2</item>
+    </string-array>
+
+    <string-array name="volumen">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR3</item>
+    </string-array>
+
+    <string-array name="longitud">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR4</item>
+    </string-array>
+
+    <string-array name="almacenamiento">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR5</item>
+    </string-array>
+
+    <string-array name="tiempo">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR6</item>
+    </string-array>
+
+    <string-array name="transferencia">
+        <!--POR DEFINIR-->
+        <item>POR DEFINIR7</item>
+    </string-array>
+
+
 </resources>
