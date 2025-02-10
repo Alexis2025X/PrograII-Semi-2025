@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">miPrimeraAplicacion</string>
-    <!--El name nos servira para llamarlo en el XML-->
-    <!--El name nos servira para llamarlo en el XML-->
     <string-array name="monedas">
         <!--POR DEFINIR-->
         <item>Dolar</item>
         <item>Euro</item>
-        <item>Quetzalez</item>
+        <item>Quetzales</item>
         <item>Lempiras</item>
         <item>Cordobas</item>
         <item>Colon CR</item>
@@ -14,23 +12,59 @@
     </string-array>
 
     <string-array name="masa">
-        <!--POR DEFINIR-->
-        <item>POR DEFINIR2</item>
+
+        <item>kilogramo</item>
+        <item>Gramo</item>
+        <item>Miligramo</item>
+        <item>Tonelada</item>
+        <item>Onza</item>
+        <item>Libra</item>
+        <item>Quintal</item>
+        <item>Hectogramo</item>
+        <item>Decagramo</item>
+        <item>Decigramo</item>
     </string-array>
 
     <string-array name="volumen">
-        <!--POR DEFINIR-->
-        <item>POR DEFINIR3</item>
+        <item>metro cubico</item>
+        <item>Kilómetro cúbico (km³)</item>
+        <item>Hectómetro cúbico (hm³)</item>
+        <item>Decámetro cúbico (dam³)</item>
+        <item>Decímetro cúbico (dm³)</item>
+        <item>Cuarto (qt)(EE. UU.)</item>
+        <item>Galón (gal) </item>
+        <item>Barril (bbl)</item>
+        <item>Pie cúbico (ft³)</item>
+        <item>Pulgada cúbica (in³)</item>
+
+
     </string-array>
 
     <string-array name="longitud">
-        <!--POR DEFINIR-->
-        <item>POR DEFINIR4</item>
+        <item>Metro</item>
+        <item>Kilómetro</item>
+        <item>Centímetro</item>
+        <item>Milímetro</item>
+        <item>Pulgada</item>
+        <item>Pie</item>
+        <item>Yarda</item>
+        <item>Milla</item>
+        <item>Micrómetro</item>
+        <item>Nanómetro</item>
     </string-array>
 
     <string-array name="almacenamiento">
         <!--POR DEFINIR-->
-        <item>POR DEFINIR5</item>
+        <item>Bit</item>
+        <item>Byte</item>
+        <item>Kilobyte</item>
+        <item>Megabyte</item>
+        <item>Gigabyte</item>
+        <item>Terabyte</item>
+        <item>Petabyte</item>
+        <item>Exabyte</item>
+        <item>Zettabyte</item>
+        <item>Yottabyte</item>
     </string-array>
 
     <string-array name="tiempo">
@@ -40,8 +74,16 @@
 
     <string-array name="transferencia">
         <!--POR DEFINIR-->
-        <item>POR DEFINIR7</item>
+        <item>Bit por segundo</item>
+        <item>Byte por segundo</item>
+        <item>Kilobit por segundo</item>
+        <item>Megabit por segundo</item>
+        <item>Gigabit por segundo</item>
+        <item>Terabit por segundo</item>
+        <item>Petabit por segundo</item>
+        <item>Exabit por segundo</item>
+        <item>Zettabit por segundo</item>
+        <item>Yottabit por segundo</item>
     </string-array>
-
 
 </resources>
