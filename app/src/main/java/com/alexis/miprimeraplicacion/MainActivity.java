@@ -116,7 +116,10 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     double cantidad = Double.parseDouble(tempVal.getText().toString());
                     tempVal = findViewById(R.id.lblRespuesta);
+
                     BigDecimal respuesta = objConversores.convertir(opcion, de, a, cantidad);
+
+                    // respuesta = respuesta.setScale(2, RoundingMode.HALF_UP);
                     tempVal.setText("Respuesta: "+ respuesta);
                     msg = "El resultado de combertir " + cantidad + TextDe + " a " + TextA + " : ";
 
@@ -132,10 +135,15 @@ class conversores{
             {new BigDecimal("1"), new BigDecimal("0.92"), new BigDecimal("0.78"), new BigDecimal("110.50"), new BigDecimal("1.27"), new BigDecimal("0.93"), new BigDecimal("1.35"), new BigDecimal("6.36"), new BigDecimal("20.50"), new BigDecimal("5.25")}, // monedas
             {new BigDecimal("1"), new BigDecimal("1000"), new BigDecimal("1000000"), new BigDecimal("0.001"), new BigDecimal("35.274"), new BigDecimal("2.20462"), new BigDecimal("0.01"), new BigDecimal("10"), new BigDecimal("100"), new BigDecimal("10000")}, // masa
             {new BigDecimal("1"), new BigDecimal("0.000000001"), new BigDecimal("0.000001"), new BigDecimal("0.001"), new BigDecimal("1000"), new BigDecimal("1057"), new BigDecimal("264.172"), new BigDecimal("6.29"), new BigDecimal("35.3148"), new BigDecimal("61023.7")}, // volumen
-            {new BigDecimal("1"), new BigDecimal("1000"), new BigDecimal("0.01"), new BigDecimal("0.001"), new BigDecimal("0.0254"), new BigDecimal("0.3048"), new BigDecimal("0.9144"), new BigDecimal("1609.34"), new BigDecimal("0.000001"), new BigDecimal("0.000000001")}, // longitud
+
+            {new BigDecimal("1"), new BigDecimal("0.001"), new BigDecimal("100"), new BigDecimal("1000"), new BigDecimal("39.3701"), new BigDecimal("3.28084"), new BigDecimal("1.09361"), new BigDecimal("0.000621371"), new BigDecimal("1000000"), new BigDecimal("1000000000")}, // longitud
+
             {new BigDecimal("1"), new BigDecimal("8"), new BigDecimal("8192"), new BigDecimal("8388608"), new BigDecimal("8589934592"), new BigDecimal("8796093022208"), new BigDecimal("9007199254740992"), new BigDecimal("9223372036854775808"), new BigDecimal("9444732965739290427392"), new BigDecimal("9671406556917033397649408")}, // Almacenamiento
+
             {new BigDecimal("1"), new BigDecimal("0.0167"), new BigDecimal("0.000278"), new BigDecimal("0.0000116"),  new BigDecimal("0.00000165"), new BigDecimal("0.0000000317"), new BigDecimal("0.000000000317"), new BigDecimal("0.00000000317"), new BigDecimal("0.00000000634"), new BigDecimal("0.0000000106")}, // tiempo
-            {new BigDecimal("1"), new BigDecimal("8"), new BigDecimal("1000"), new BigDecimal("1000000"), new BigDecimal("1000000000"), new BigDecimal("1000000000000"), new BigDecimal("1000000000000000"), new BigDecimal("1000000000000000000"), new BigDecimal("1000000000000000000000"), new BigDecimal("1000000000000000000000000")}, // transferencia
+
+            {new BigDecimal("1"), new BigDecimal("0.125"), new BigDecimal("0.001"), new BigDecimal("1e-6"), new BigDecimal("1e-9"), new BigDecimal("1e-12"), new BigDecimal("1e-15"), new BigDecimal("1e-18"), new BigDecimal("1e-21"), new BigDecimal("1e-24")}, // transferencia
+
     };
 
     public BigDecimal convertir(int opcion, int de, int a, double cantidad){
@@ -145,5 +153,4 @@ class conversores{
         return resultado;
     }
 }
-
     //Acelerometro: Desplazamiento vertical, horizontal y
