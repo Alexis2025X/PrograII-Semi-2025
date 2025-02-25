@@ -1,24 +1,29 @@
 package com.alexis.miprimeraplicacion;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
-    TabHost tbh;
+
+    TextView cantidadMetros;
+    EditText cantidadM;
+    TextView txtResultAgua;
     Button btn;
-    TextView tempVal;
+    Button btnCombersor;
+
     Spinner spn;
-    conversores objConversores = new conversores();
+    EditText cantidadComber;
+    TextView resultadoComber;
+
+    TabHost tbh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,130 +32,61 @@ public class MainActivity extends AppCompatActivity {
         tbh = findViewById(R.id.tbhConversor);
         tbh.setup();
 
-        tbh.addTab(tbh.newTabSpec("Monedas").setContent(R.id.tabMonedas).setIndicator("MONEDAS", null));
-        tbh.addTab(tbh.newTabSpec("Masa").setContent(R.id.tabMasa).setIndicator("MASA", null));
-        tbh.addTab(tbh.newTabSpec("Volumen").setContent(R.id.tabVolumen).setIndicator("VOLUMEN", null));
-        tbh.addTab(tbh.newTabSpec("Longitud").setContent(R.id.tabLongitud).setIndicator("LONGITUD", null));
-        tbh.addTab(tbh.newTabSpec("Almacenamiento").setContent(R.id.tabAlmacenamiento).setIndicator("ALMACENAMIENTO", null));
-        tbh.addTab(tbh.newTabSpec("Tiempo").setContent(R.id.tabTiempo).setIndicator("TIEMPO", null));
-        tbh.addTab(tbh.newTabSpec("TransferenciaDatos").setContent(R.id.tabTransferenciaDatos).setIndicator("TRANFERENCIA DE DATOS", null));
-
+        tbh.addTab(tbh.newTabSpec("tabPagoAgua").setContent(R.id.tabPagoAgua).setIndicator("Pago agua", null));
+        tbh.addTab(tbh.newTabSpec("tabConversorArea").setContent(R.id.tabConversorArea).setIndicator("Comvertir area", null));
 
         btn = findViewById(R.id.btnCalcular);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int opcion = tbh.getCurrentTab();
+                cantidadM = findViewById(R.id.txtCantidad);
+                double metros = Double.parseDouble(cantidadM.getText().toString());
+                double valor_a_pagar = 0;
+                txtResultAgua = findViewById(R.id.lblRespuesta);
+                if (metros >= 0 && metros <= 18) {
+                    valor_a_pagar = 6;
+                    txtResultAgua.setText("Respuesta: $" + valor_a_pagar);
+                } else if (metros > 18 && metros <= 28) {
+
+                    valor_a_pagar = ((metros - 18) * 0.45)+6;
+                    txtResultAgua.setText("Respuesta: $" + valor_a_pagar);
+                } else if (metros > 28) {
+                    valor_a_pagar = (((metros - 28) * 0.65) + ((28 - 18) * 0.45)) + 6;
+                    txtResultAgua.setText("Respuesta: $" + valor_a_pagar);
+                }
+            }
+        });
+
+        btnCombersor = findViewById(R.id.btnCalcularArea);
+        btnCombersor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 int de = 0;
+                spn = findViewById(R.id.spnDeArea);
+                de = spn.getSelectedItemPosition();
                 int a = 0;
-                String msg = "";
-                String TextDe = "";
-                String TextA ="";
+                spn = findViewById(R.id.spnAArea);
+                a = spn.getSelectedItemPosition();
 
-                switch (opcion){
-                    case 0:
-                        spn = findViewById(R.id.spnDeMonedas);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
+                cantidadComber = findViewById(R.id.txtCantidadArea);
 
-                        spn = findViewById(R.id.spnAMonedas);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 1:
-                        spn = findViewById(R.id.spnDeMasa);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-
-                        spn = findViewById(R.id.spnAMasa);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 2:
-                        spn = findViewById(R.id.spnDeVolumen);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-                        spn = findViewById(R.id.spnAVolumen);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 3:
-                        spn = findViewById(R.id.spnDeLongitud);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-                        spn = findViewById(R.id.spnALongitud);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 4:
-                        spn = findViewById(R.id.spnDeAlmacenamiento);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-                        spn = findViewById(R.id.spnAAlmacenamiento);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 5:
-                        spn = findViewById(R.id.spnDeTiempo);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-                        spn = findViewById(R.id.spnATiempo);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                    case 6:
-                        spn = findViewById(R.id.spnDeTransferenciasDatos);
-                        de = spn.getSelectedItemPosition();
-                        TextDe = spn.getItemAtPosition(de).toString();
-                        spn = findViewById(R.id.spnATransferenciasDatos);
-                        a = spn.getSelectedItemPosition();
-                        TextA = spn.getItemAtPosition(a).toString();
-                        break;
-                }
-
-                tempVal = findViewById(R.id.txtCantidad);
-                if(tempVal.getText().toString().isEmpty()){
-                    double cantidad = 0;
-                    msg = "La cantidad que ingresaste no es valida";
-                }
-                else{
-                    double cantidad = Double.parseDouble(tempVal.getText().toString());
-                    tempVal = findViewById(R.id.lblRespuesta);
-
-                    BigDecimal respuesta = objConversores.convertir(opcion, de, a, cantidad);
-
-                    // respuesta = respuesta.setScale(2, RoundingMode.HALF_UP);
-                    tempVal.setText("Respuesta: "+ respuesta);
-                    msg = "El resultado de combertir " + cantidad + TextDe + " a " + TextA + " : ";
-
-                    Toast.makeText(MainActivity.this, msg + respuesta, Toast.LENGTH_LONG).show();
-                }
+                double cantidadAcombertir = Double.parseDouble(cantidadComber.getText().toString());
+                resultadoComber = findViewById(R.id.lblRespuestaArea);
+                resultadoComber.setText("Resultado: " + combertirArea(de, a, cantidadAcombertir));
 
             }
         });
     }
-}
-class conversores{
-    BigDecimal[][] valores = {
-            {new BigDecimal("1"), new BigDecimal("0.92"), new BigDecimal("0.78"), new BigDecimal("110.50"), new BigDecimal("1.27"), new BigDecimal("0.93"), new BigDecimal("1.35"), new BigDecimal("6.36"), new BigDecimal("20.50"), new BigDecimal("5.25")}, // monedas
-            {new BigDecimal("1"), new BigDecimal("1000"), new BigDecimal("1000000"), new BigDecimal("0.001"), new BigDecimal("35.274"), new BigDecimal("2.20462"), new BigDecimal("0.01"), new BigDecimal("10"), new BigDecimal("100"), new BigDecimal("10000")}, // masa
-            {new BigDecimal("1"), new BigDecimal("0.000000001"), new BigDecimal("0.000001"), new BigDecimal("0.001"), new BigDecimal("1000"), new BigDecimal("1057"), new BigDecimal("264.172"), new BigDecimal("6.29"), new BigDecimal("35.3148"), new BigDecimal("61023.7")}, // volumen
 
-            {new BigDecimal("1"), new BigDecimal("0.001"), new BigDecimal("100"), new BigDecimal("1000"), new BigDecimal("39.3701"), new BigDecimal("3.28084"), new BigDecimal("1.09361"), new BigDecimal("0.000621371"), new BigDecimal("1000000"), new BigDecimal("1000000000")}, // longitud
-
-            {new BigDecimal("1"), new BigDecimal("8"), new BigDecimal("8192"), new BigDecimal("8388608"), new BigDecimal("8589934592"), new BigDecimal("8796093022208"), new BigDecimal("9007199254740992"), new BigDecimal("9223372036854775808"), new BigDecimal("9444732965739290427392"), new BigDecimal("9671406556917033397649408")}, // Almacenamiento
-
-            {new BigDecimal("1"), new BigDecimal("0.0167"), new BigDecimal("0.000278"), new BigDecimal("0.0000116"),  new BigDecimal("0.00000165"), new BigDecimal("0.0000000317"), new BigDecimal("0.000000000317"), new BigDecimal("0.00000000317"), new BigDecimal("0.00000000634"), new BigDecimal("0.0000000106")}, // tiempo
-
-            {new BigDecimal("1"), new BigDecimal("0.125"), new BigDecimal("0.001"), new BigDecimal("1e-6"), new BigDecimal("1e-9"), new BigDecimal("1e-12"), new BigDecimal("1e-15"), new BigDecimal("1e-18"), new BigDecimal("1e-21"), new BigDecimal("1e-24")}, // transferencia
-
-    };
-
-    public BigDecimal convertir(int opcion, int de, int a, double cantidad){
-        BigDecimal cantidadBigDecimal = new BigDecimal(String.valueOf(cantidad));
-        BigDecimal resultado = valores[opcion][a].divide(valores[opcion][de], 10, RoundingMode.HALF_UP).multiply(cantidadBigDecimal);
-
-        return resultado;
+    class combersorArea {
+        double[][] valores =
+                {
+                        {1,16,0.705012,7050.12,843187.33452,4970.419,7588686.011}
+                };
+    }
+    public double combertirArea(int de, int a , double cant) {
+        combersorArea obj = new combersorArea();
+        return (obj.valores[0][a] / obj.valores[0][de]) * cant;
     }
 }
-    //Acelerometro: Desplazamiento vertical, horizontal y
