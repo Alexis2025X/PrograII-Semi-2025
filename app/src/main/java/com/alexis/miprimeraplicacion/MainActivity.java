@@ -20,12 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     TextView tempVal;
     DB db;
-    //Acción nuevo para crear un nuevo registro
     String accion = "nuevo", idAmigo = "";
-    String mostrarMsg(String msg){;
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-        return msg;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,31 +32,38 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.fabListaAmigos);
         fab.setOnClickListener(view->abrirVentana());
+
         mostrarDatos();
     }
     private void mostrarDatos(){
         try {
-            //Recuperamos los parametros que vienen para modificar
             Bundle parametros = getIntent().getExtras();
             accion = parametros.getString("accion");
-            if(accion.equals("modificar")){
-                //Recuperamos los datos del amigo
+            if (accion.equals("modificar")) {
                 JSONObject datos = new JSONObject(parametros.getString("amigos"));
                 idAmigo = datos.getString("idAmigo");
+
                 tempVal = findViewById(R.id.txtNombre);
                 tempVal.setText(datos.getString("nombre"));
+
                 tempVal = findViewById(R.id.txtDireccion);
                 tempVal.setText(datos.getString("direccion"));
+
                 tempVal = findViewById(R.id.txtTelefono);
                 tempVal.setText(datos.getString("telefono"));
+
                 tempVal = findViewById(R.id.txtEmail);
                 tempVal.setText(datos.getString("email"));
+
                 tempVal = findViewById(R.id.txtDui);
-                tempVal.setText(datos.getString("dui"));}
+                tempVal.setText(datos.getString("dui"));
+            }
+        }catch (Exception e){
+            mostrarMsg("Error: "+e.getMessage());
         }
-        catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
-        }
+    }
+    private void mostrarMsg(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
     private void abrirVentana(){
         Intent intent = new Intent(this, lista_amigos.class);
@@ -81,12 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
         tempVal = findViewById(R.id.txtDui);
         String dui = tempVal.getText().toString();
-        //Arreglo de datos
-        String[] datos = {"", nombre, direccion, telefono, email, dui, ""};
-        //Llamando al metodo administrar amigos de la clase DB
-        db.administrar_amigos("agregar", datos);
-        Toast.makeText(getApplicationContext(), "Registro guardado con exito", Toast.LENGTH_LONG).show();
-        abrirVentana();//Abrir ventanas
+
+        String[] datos = {idAmigo, nombre, direccion, telefono, email, dui, ""};
+        db.administrar_amigos(accion, datos);
+        Toast.makeText(getApplicationContext(), "Registro guardado con exito.", Toast.LENGTH_LONG).show();
+        abrirVentana();
     }
 }
-

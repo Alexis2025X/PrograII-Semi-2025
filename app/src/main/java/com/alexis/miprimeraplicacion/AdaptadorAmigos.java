@@ -1,10 +1,13 @@
 package com.alexis.miprimeraplicacion;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,25 +24,21 @@ public class AdaptadorAmigos extends BaseAdapter {
         this.alAmigos = alAmigos;
     }
 
-    //Cuenta el array de amigos y da su cantidad de valores
     @Override
     public int getCount() {
         return alAmigos.size();
     }
 
-    //Obtiene el objeto de la posicion del array y su posicion
     @Override
     public Object getItem(int position) {
         return alAmigos.get(position);
     }
 
-    //Obtiene el id del objeto de la posicion del array
     @Override
     public long getItemId(int position) {
         return 0;
     }
 
-    //Obtiene la vista de la posicion del array
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -55,6 +54,10 @@ public class AdaptadorAmigos extends BaseAdapter {
 
             tempVal = itemView.findViewById(R.id.lblEmailAdaptador);
             tempVal.setText(misAmigos.getEmail());
+
+            ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
+            Bitmap bitmap = BitmapFactory.decodeFile(misAmigos.getFoto());
+            img.setImageBitmap(bitmap);
         } catch (Exception e) {
             Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
