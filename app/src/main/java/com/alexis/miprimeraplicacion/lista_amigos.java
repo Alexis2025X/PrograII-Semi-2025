@@ -16,12 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -72,6 +67,7 @@ public class lista_amigos extends Activity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         try{
             if( item.getItemId()==R.id.mnxNuevo){
+                parametros.putString("accion", "nuevo");
                 abriVentana();
             }else if( item.getItemId()==R.id.mnxModificar){
                 parametros.putString("accion", "modificar");
@@ -142,7 +138,7 @@ public class lista_amigos extends Activity {
         }catch (Exception e){
             mostrarMsg("Error: " + e.getMessage());
         }
-    }
+    }//WHILE
     private void mostrarDatosAmigos(){
         try{
             if(jsonArray.length()>0){
