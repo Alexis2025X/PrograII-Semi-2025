@@ -59,6 +59,7 @@ public class AdaptadorAmigos extends BaseAdapter {
             tempVal = itemView.findViewById(R.id.lblEmailAdaptador);
             tempVal.setText(misAmigos.getEmail());
 
+
             ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
             Bitmap bitmap = BitmapFactory.decodeFile(misAmigos.getFoto());
             img.setImageBitmap(bitmap);
