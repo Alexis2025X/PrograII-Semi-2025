@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     //mostrarMsg("Ha llegado al final de las fotos");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("3 de 3");
-                    mostrarMsg("Ha llegado al final de las fotos FOTO 3");
+                    mostrarMsg("Esta en la ultima foto");
                 } else if (contadorClicks == 2) {
                     img = findViewById(R.id.imgFotoProducto);
                     img.setVisibility(View.GONE);
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                     img.setVisibility(View.GONE);
                     img = findViewById(R.id.imgFotoProducto2);
                     img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 2");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("2 de 3");
                 } else if (contadorClicks == 1) {
@@ -97,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     img.setVisibility(View.GONE);
                     img = findViewById(R.id.imgFotoProducto3);
                     img.setVisibility(View.GONE);
-                    mostrarMsg("Ha llegado al final de las fotos FOTO 1");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("1 de 3");
                 }
@@ -116,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     img = findViewById(R.id.imgFotoProducto3);
                     img.setVisibility(View.GONE);
                     //mostrarMsg("Ha llegado al final de las fotos");
-                    mostrarMsg("Ha llegado al final de las fotos FOTO 1");
+                    mostrarMsg("Esta en la primera foto");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("1 de 3");
                 } else if (contadorClicks == 2) {
@@ -126,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     img.setVisibility(View.GONE);
                     img = findViewById(R.id.imgFotoProducto2);
                     img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 2");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("2 de 3");
                 } else if (contadorClicks == 3) {
@@ -136,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                     img.setVisibility(View.GONE);
                     img = findViewById(R.id.imgFotoProducto3);
                     img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 3");
                     tempVal = findViewById(R.id.lblPosicion);
                     tempVal.setText("3 de 3");
                 }
@@ -155,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("Seleccionar foto");
         builder.setMessage("¿Desea abrir la camara o la galeria?");
         builder.setPositiveButton("Abrir camar", (dialogInterface, i) -> tomarFoto());
-        builder.setNegativeButton("Abrir galeria", (dialogInterface, i) -> abrirrGaleria());
+        builder.setNegativeButton("Abrir galeria", (dialogInterface, i) -> abrirGaleria());
         builder.show();
         });
     }
@@ -200,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //private static final int REQUEST_IMAGE_GALLERY = 1;
 
-    private void abrirrGaleria() {
+    private void abrirGaleria() {
         //img.setOnClickListener(view -> {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryIntent.setType("image/*");
@@ -337,90 +333,3 @@ public class MainActivity extends AppCompatActivity {
         //}*/
 
 }
-
-/*Button btnAdelante = findViewById(R.id.btnAdelante);
-    btnAdelante.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            contadorClicks++;
-            if (contadorClicks == 3) {
-                img = findViewById(R.id.imgFotoProducto3);
-                img.setVisibility(View.VISIBLE);
-                //mostrarMsg("Ha llegado al final de las fotos");
-                mostrarMsg("FOTO 3");
-            } else if (contadorClicks == 2) {
-                img = findViewById(R.id.imgFotoProducto2);
-                img.setVisibility(View.VISIBLE);
-                mostrarMsg("FOTO 2");
-            } else if (contadorClicks == 1) {
-                img = findViewById(R.id.imgFotoProducto);
-                img.setVisibility(View.VISIBLE);
-                mostrarMsg("FOTO 1");
-            }
-        }
-    });
-    Button btnAtras = findViewById(R.id.btnAtras);
-            btnAtras.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-                contadorClicks--;
-                if (contadorClicks == 1) {
-                    img = findViewById(R.id.imgFotoProducto);
-                    img.setVisibility(View.VISIBLE);
-                    //mostrarMsg("Ha llegado al final de las fotos");
-                    mostrarMsg("FOTO 1");
-                } else if (contadorClicks == 2) {
-                    img = findViewById(R.id.imgFotoProducto2);
-                    img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 2");
-                } else if (contadorClicks == 3) {
-                    img = findViewById(R.id.imgFotoProducto3);
-                    img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 3");
-                }
-
-            });
-        }
-    });*/
-
-
-/*Button btnAdelante = findViewById(R.id.btnAdelante);
-    btnAdelante.setOnClickListener(view->{
-            contadorClicks++;
-            if (contadorClicks == 3) {
-                img = findViewById(R.id.imgFotoProducto3);
-                img.setVisibility(View.VISIBLE);
-                //mostrarMsg("Ha llegado al final de las fotos");
-                mostrarMsg("FOTO 3");
-            } else if (contadorClicks == 2) {
-                img = findViewById(R.id.imgFotoProducto2);
-                img.setVisibility(View.VISIBLE);
-                mostrarMsg("FOTO 2");
-            } else if (contadorClicks == 1) {
-                img = findViewById(R.id.imgFotoProducto);
-                img.setVisibility(View.VISIBLE);
-                mostrarMsg("FOTO 1");
-            }
-
-    });
-    Button btnAtras = findViewById(R.id.btnAtras);
-            btnAtras.setOnClickListener(view -> {
-                contadorClicks--;
-                if (contadorClicks == 1) {
-                    img = findViewById(R.id.imgFotoProducto);
-                    img.setVisibility(View.VISIBLE);
-                    //mostrarMsg("Ha llegado al final de las fotos");
-                    mostrarMsg("FOTO 1");
-                } else if (contadorClicks == 2) {
-                    img = findViewById(R.id.imgFotoProducto2);
-                    img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 2");
-                } else if (contadorClicks == 3) {
-                    img = findViewById(R.id.imgFotoProducto3);
-                    img.setVisibility(View.VISIBLE);
-                    mostrarMsg("FOTO 3");
-                }
-
-            });
-        }
-    });*/
