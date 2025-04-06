@@ -2,43 +2,111 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:cardCornerRadius="150dp"
-        android:layout_margin="10dp">
-        <ImageView
-            android:id="@+id/imgFotoAdaptador"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher_round"/>
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="150dp"
+            android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/lblNombreAdaptador"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="80dp"
-        android:text="Juan Perez"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/lblTelefonoAdaptador"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="80dp"
-        android:text="2626-1212"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/lblEmailAdaptador"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="200dp"
-        android:text="juan@gmail.com"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/imgFotoAdaptador"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher_round" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/lblCod"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="80dp"
+            android:text="Cod:"
+            android:textColor="@color/textoEncabezado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/lblCodigoAdaptador"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="80dp"
+            android:text="Prov0001"
+            android:textColor="@color/textoBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/lblDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"
+            android:text="Descrip:"
+            android:textColor="@color/textoEncabezado" />
+
+        <TextView
+            android:id="@+id/lblDescripcionAdaptador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblDescripcion"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="0dp"
+            android:text="Gaseosa"
+            android:textColor="@color/textoBase" />
+
+        <TextView
+            android:id="@+id/lblMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="10dp"
+            android:text="Marca:"
+            android:textColor="@color/textoEncabezado" />
+
+        <TextView
+            android:id="@+id/lblMarcaAdaptador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="30dp"
+            android:text="Coca-Cola"
+            android:textColor="@color/textoBase" />
+
+        <TextView
+            android:id="@+id/lblPresentacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="80dp"
+            android:text="Present:"
+            android:textColor="@color/textoEncabezado" />
+
+        <TextView
+            android:id="@+id/lblPresentacionAdaptador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="70dp"
+            android:text="botella"
+            android:textColor="@color/textoBase" />
+
+        <TextView
+            android:id="@+id/lblPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="50dp"
+            android:text="Precio $:"
+            android:textColor="@color/textoEncabezado" />
+
+        <TextView
+            android:id="@+id/lblPrecioAdaptador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="70dp"
+            android:text="2.00"
+            android:textColor="@color/textoBase" />
+
+    </RelativeLayout>

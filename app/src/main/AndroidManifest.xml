@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--Permiso para tomar fotos de la galeria-->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:usesCleartextTraffic="true"
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,13 +22,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiPrimerAplicacion"
         tools:targetApi="31">
+
         <!--Esta ventana se abrira al precionar un boton-->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
         <!--Esta ventana se abrira al iniciar la aplicacion-->
         <activity
-            android:name=".lista_amigos"
+            android:name=".lista_productos"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +37,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+
         <provider
             android:authorities="com.alexis.miprimeraplicacion.fileprovider"
             android:name="androidx.core.content.FileProvider"

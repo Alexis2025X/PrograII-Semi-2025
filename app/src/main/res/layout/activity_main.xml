@@ -5,80 +5,203 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/fondo"
     tools:context=".MainActivity">
 
-   <EditText
-       android:id="@+id/txtNombre"
-       android:hint="Nombre"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <EditText
-       android:id="@+id/txtDireccion"
-       android:hint="Dirección"
-       android:layout_below="@+id/txtNombre"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <EditText
-       android:id="@+id/txtTelefono"
-       android:hint="Telefono"
-       android:layout_below="@+id/txtDireccion"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <EditText
-       android:id="@+id/txtEmail"
-       android:hint="Email"
-       android:layout_below="@+id/txtTelefono"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <EditText
-       android:id="@+id/txtDui"
-       android:hint="DUI"
-       android:layout_below="@+id/txtEmail"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <ImageButton
-       android:id="@+id/imgFotoAmigo"
-       android:layout_below="@id/txtDui"
-       android:layout_marginTop="20dp"
-       android:layout_centerHorizontal="true"
-       android:src="@mipmap/ic_launcher_round"
-       android:layout_width="100dp"
-       android:layout_height="100dp"/>
-
-   <Button
-       android:id="@+id/btnGuardarAmigo"
-       android:text="Guardar Amigo"
-       android:layout_below="@id/imgFotoAmigo"
-       android:layout_marginTop="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
-
-   <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fabListaAmigos"
-       android:src="@android:drawable/ic_menu_revert"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentEnd="true"
-       android:layout_margin="20dp"
+   <TextView
+       android:id="@+id/lblCod"
+       android:layout_marginStart="20dp"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
-</RelativeLayout>
+       android:layout_height="wrap_content"
+       android:text="Codigo"
+       android:textColor="@color/textoEncabezado"
+       android:textSize="15sp" />
+
+   <EditText
+       android:id="@+id/txtCodigo"
+       android:layout_width="131dp"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/lblCod"
+       android:layout_marginLeft="20dp"
+       android:layout_marginTop="0dp"
+       android:layout_marginRight="20dp"
+       android:hint="PROV0001"
+       android:textColor="@color/textoBase"
+       android:textColorHint="@color/textoBase" />
+
+     <TextView
+         android:id="@+id/lblDescripcion"
+         android:layout_marginStart="20dp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/txtCodigo"
+         android:layout_marginTop="5dp"
+          android:text="Descripcion"
+          android:textColor="@color/textoEncabezado"
+          android:textSize="15sp" />
+
+      <EditText
+          android:id="@+id/txtDescripcion"
+          android:layout_width="133dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lblDescripcion"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:hint="Gaseosa"
+          android:textColor="@color/textoBase"
+          android:textColorHint="@color/textoBase" />
+
+      <TextView
+          android:id="@+id/lblPrecio"
+          android:layout_marginStart="20dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/txtDescripcion"
+          android:layout_marginTop="5dp"
+          android:text="Precio"
+          android:textColor="@color/textoEncabezado"
+          android:textSize="15sp" />
+
+      <EditText
+          android:id="@+id/txtPrecio"
+          android:layout_width="143dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lblPrecio"
+          android:layout_marginStart="20dp"
+          android:layout_marginRight="20dp"
+          android:hint="2.00"
+          android:textColor="@color/textoBase"
+          android:textColorHint="@color/textoBase" />
+
+      <TextView
+          android:id="@+id/lblMarca"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/txtPresentacion"
+          android:layout_marginStart="82dp"
+          android:layout_marginTop="5dp"
+          android:layout_toEndOf="@+id/lblDescripcion"
+          android:text="Marca"
+          android:textColor="@color/textoEncabezado"
+          android:textSize="15sp" />
+      <EditText
+          android:id="@+id/txtMarca"
+          android:layout_width="133dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lblMarca"
+          android:layout_marginStart="8dp"
+          android:layout_marginRight="20dp"
+          android:layout_toEndOf="@+id/txtDescripcion"
+          android:hint="Coca Cola"
+          android:textColor="@color/textoBase"
+          android:textColorHint="@color/textoBase" />
+
+      <EditText
+          android:id="@+id/txtPresentacion"
+          android:layout_width="136dp"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lblPresentacion"
+          android:layout_marginStart="8dp"
+          android:layout_marginRight="20dp"
+          android:layout_toEndOf="@+id/txtCodigo"
+          android:hint="Botella"
+          android:textColor="@color/textoBase"
+          android:textColorHint="@color/textoBase" />
+
+      <TextView
+          android:id="@+id/lblPresentacion"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="114dp"
+          android:layout_toEndOf="@+id/lblCod"
+          android:text="Presentacion"
+          android:textColor="@color/textoEncabezado"
+          android:textSize="15sp" />
+
+
+      <!--   -->
+      <ImageButton
+          android:id="@+id/imgFotoProducto"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:layout_below="@id/txtPrecio"
+          android:layout_marginTop="71dp"
+          android:layout_centerHorizontal="true"
+          android:src="@mipmap/ic_launcher_round"
+          />
+    <ImageButton
+        android:id="@+id/imgFotoProducto2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/txtPrecio"
+        android:layout_marginTop="71dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone" />
+    <ImageButton
+        android:id="@+id/imgFotoProducto3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/txtPrecio"
+        android:layout_marginTop="71dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/btnAtras"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="305dp"
+        android:text="Atras" />
+
+    <Button
+        android:id="@+id/btnAdelante"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="305dp"
+        android:layout_marginEnd="5dp"
+        android:text="Adelante" />
+
+    <TextView
+        android:id="@+id/lblPosicion"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="410dp"
+        android:text="1 de 3"
+        android:textAlignment="center"
+        android:textColor="@color/textoEncabezado" />
+
+    <TextView
+        android:id="@+id/lblFoto"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Imagen"
+        android:textAlignment="center"
+        android:layout_marginTop="390dp"
+        android:textColor="@color/textoEncabezado" />
+
+    <Button
+        android:id="@+id/btnGuardarProducto"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="440dp"
+        android:text="Guardar Producto" />
+
+      <com.google.android.material.floatingactionbutton.FloatingActionButton
+          android:id="@+id/fabListaProductos"
+          android:src="@android:drawable/ic_menu_revert"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentEnd="true"
+          android:layout_margin="20dp"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+    </RelativeLayout>
