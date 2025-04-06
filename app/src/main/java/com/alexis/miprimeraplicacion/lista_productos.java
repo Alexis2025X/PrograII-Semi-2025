@@ -163,6 +163,8 @@ public class lista_productos extends Activity {
                     jsonObject.put("presentacion", cProductos.getString(4));
                     jsonObject.put("precio", cProductos.getString(5));
                     jsonObject.put("foto", cProductos.getString(6));
+                    jsonObject.put("foto2", cProductos.getString(7));
+                    jsonObject.put("foto3", cProductos.getString(8));
                     jsonArray.put(jsonObject);
                 }while(cProductos.moveToNext());
                 mostrarDatosAmigos();
@@ -190,7 +192,9 @@ public class lista_productos extends Activity {
                             jsonObject.getString("marca"),
                             jsonObject.getString("presentacion"),
                             jsonObject.getString("precio"),
-                            jsonObject.getString("urlFoto")
+                            jsonObject.getString("urlFoto"),
+                            jsonObject.getString("urlFoto2"),
+                            jsonObject.getString("urlFoto3")
                     );
                     alProductos.add(misAmigos);
                 }

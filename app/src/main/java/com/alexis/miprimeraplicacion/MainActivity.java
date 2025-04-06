@@ -38,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
     DB db;
     String accion = "nuevo", idProducto = "", id="", rev="";
     ImageView img;
+    ImageView img2;
+    ImageView img3;
     String urlCompletaFoto = "";
+    String urlCompletaFoto2 = "";
+    String urlCompletaFoto3 = "";
     Uri uriFotoSeleccionada;
     Intent tomarFotoIntent;
     utilidades utls;
@@ -52,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         utls = new utilidades();
         img = findViewById(R.id.imgFotoProducto);
         //Agregue
-        img = findViewById(R.id.imgFotoProducto2);
-        img = findViewById(R.id.imgFotoProducto3);
+        img2 = findViewById(R.id.imgFotoProducto2);
+        img3 = findViewById(R.id.imgFotoProducto3);
         db = new DB(this);
         btn = findViewById(R.id.btnGuardarProducto);
         btn.setOnClickListener(view->guardarAmigo());
@@ -154,6 +158,23 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Abrir galeria", (dialogInterface, i) -> abrirGaleria());
         builder.show();
         });
+        img2.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Seleccionar foto");
+            builder.setMessage("¿Desea abrir la camara o la galeria?");
+            builder.setPositiveButton("Abrir camar", (dialogInterface, i) -> tomarFoto());
+            builder.setNegativeButton("Abrir galeria", (dialogInterface, i) -> abrirGaleria());
+            builder.show();
+        });
+        img3.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Seleccionar foto");
+            builder.setMessage("¿Desea abrir la camara o la galeria?");
+            builder.setPositiveButton("Abrir camar", (dialogInterface, i) -> tomarFoto());
+            builder.setNegativeButton("Abrir galeria", (dialogInterface, i) -> abrirGaleria());
+            builder.show();
+        });
+
     }
 
     private void mostrarDatos(){
@@ -183,10 +204,12 @@ public class MainActivity extends AppCompatActivity {
 
                 urlCompletaFoto = datos.getString("urlFoto");
                 img.setImageURI(Uri.parse(urlCompletaFoto));
-/*                urlCompletaFoto2 = datos.getString("urlFoto2");
-                img.setImageURI(Uri.parse(urlCompletaFoto2));
+
+                urlCompletaFoto2 = datos.getString("urlFoto2");
+                img2.setImageURI(Uri.parse(urlCompletaFoto2));
+
                 urlCompletaFoto3 = datos.getString("urlFoto3");
-                img.setImageURI(Uri.parse(urlCompletaFoto3));*/
+                img3.setImageURI(Uri.parse(urlCompletaFoto3));
             }else {
                 idProducto = utls.generarUnicoId();
             }
@@ -213,8 +236,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent data = result.getData();
                     uriFotoSeleccionada = data.getData(); // Guarda la URI
                     img.setImageURI(uriFotoSeleccionada);// Muestra la imagen
-                    //urlCompletaFoto = uriFotoSeleccionada.toString();
-                    mostrarMsg(uriFotoSeleccionada.toString());
+                    img2.setImageURI(uriFotoSeleccionada);// Muestra la imagen
+                    img3.setImageURI(uriFotoSeleccionada);// Muestra la imagen
+                    urlCompletaFoto = uriFotoSeleccionada.toString();
+                    mostrarMsg(urlCompletaFoto);
                    // startActivityForResult(uriFotoSeleccionada, 1);
                 } else {
                     mostrarMsg("No se seleccionó la imagen.");
@@ -223,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void tomarFoto(){
         //img.setOnClickListener(view->{
+        if (contadorClicks == 1) {
             tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File fotoAmigo = null;
             try{
@@ -238,6 +264,40 @@ public class MainActivity extends AppCompatActivity {
             }catch (Exception e){
                 mostrarMsg("Error: "+e.getMessage());
             }
+        }else if (contadorClicks == 2) {
+            tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            File fotoAmigo = null;
+            try{
+                fotoAmigo = crearImagenAmigo();
+                if( fotoAmigo!=null ){
+                    Uri uriFotoAimgo = FileProvider.getUriForFile(MainActivity.this,
+                            "com.alexis.miprimeraplicacion.fileprovider", fotoAmigo);
+                    tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoAimgo);
+                    startActivityForResult(tomarFotoIntent, 2);
+                }else{
+                    mostrarMsg("No se pudo crear la imagen.");
+                }
+            }catch (Exception e){
+                mostrarMsg("Error: "+e.getMessage());
+            }
+        }else if (contadorClicks == 3) {
+            tomarFotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            File fotoAmigo = null;
+            try{
+                fotoAmigo = crearImagenAmigo();
+                if( fotoAmigo!=null ){
+                    Uri uriFotoAimgo = FileProvider.getUriForFile(MainActivity.this,
+                            "com.alexis.miprimeraplicacion.fileprovider", fotoAmigo);
+                    tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoAimgo);
+                    startActivityForResult(tomarFotoIntent, 3);
+                }else{
+                    mostrarMsg("No se pudo crear la imagen.");
+                }
+            }catch (Exception e){
+                mostrarMsg("Error: "+e.getMessage());
+            }
+        }
+
         //});
     }//nombre
 
@@ -245,9 +305,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try{
-            if( requestCode==1 && resultCode==RESULT_OK ){
+            if( requestCode==1  ||requestCode==2 || requestCode==3  && resultCode==RESULT_OK ){
                 //Bitmap imagenBitmap = BitmapFactory.decodeFile(urlCompletaFoto);
-                img.setImageURI(Uri.parse(urlCompletaFoto));
+                if(contadorClicks == 1){
+                    img = findViewById(R.id.imgFotoProducto);
+                    img.setImageURI(Uri.parse(urlCompletaFoto));
+                }else if(contadorClicks == 2) {
+                    img = findViewById(R.id.imgFotoProducto2);
+                    img2.setImageURI(Uri.parse(urlCompletaFoto2));
+                }else if(contadorClicks == 3) {
+                    img = findViewById(R.id.imgFotoProducto3);
+                    img3.setImageURI(Uri.parse(urlCompletaFoto3));
+                }
                 //img.setImageURI(uriFotoSeleccionada);
             }else{
                 mostrarMsg("No se tomo la foto.");
@@ -265,7 +334,20 @@ public class MainActivity extends AppCompatActivity {
             dirAlmacenamiento.mkdir();
         }
         File image = File.createTempFile(fileName, ".jpg", dirAlmacenamiento);
-        urlCompletaFoto = image.getAbsolutePath();
+        if(contadorClicks == 1){
+            img = findViewById(R.id.imgFotoProducto);
+            urlCompletaFoto = image.getAbsolutePath();
+
+        }else if(contadorClicks == 2) {
+            img = findViewById(R.id.imgFotoProducto2);
+            urlCompletaFoto2 = image.getAbsolutePath();
+
+        }else if(contadorClicks == 3) {
+            img = findViewById(R.id.imgFotoProducto3);
+            urlCompletaFoto3 = image.getAbsolutePath();
+
+        }
+
         return image;
     }
     private void mostrarMsg(String msg){
@@ -304,6 +386,8 @@ public class MainActivity extends AppCompatActivity {
             datosAmigos.put("presentacion", presentacion);
             datosAmigos.put("precio", precio);
             datosAmigos.put("urlFoto", urlCompletaFoto);
+            datosAmigos.put("urlFoto2", urlCompletaFoto2);
+            datosAmigos.put("urlFoto3", urlCompletaFoto3);
 
             di = new detectarInternet(this);
             if(di.hayConexionInternet()) {//online
@@ -319,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                     mostrarMsg("Error: "+respuestaJSON.getString("msg"));
                 }
             }
-            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto};
+            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto, urlCompletaFoto2, urlCompletaFoto3};
             db.administrar_amigos(accion, datos);
             Toast.makeText(getApplicationContext(), "Registro guardado con exito.", Toast.LENGTH_LONG).show();
             abrirVentana();

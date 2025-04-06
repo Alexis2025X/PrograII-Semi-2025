@@ -68,6 +68,12 @@ public class AdaptadorProductos extends BaseAdapter {
             ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
             Bitmap bitmap = BitmapFactory.decodeFile(misProductos.getFoto());
             img.setImageBitmap(bitmap);
+/*            ImageView img2 = itemView.findViewById(R.id.imgFotoAdaptador);
+            Bitmap bitmap2 = BitmapFactory.decodeFile(misProductos.getFoto2());
+            img2.setImageBitmap(bitmap2);
+            ImageView img3 = itemView.findViewById(R.id.imgFotoAdaptador);
+            Bitmap bitmap3 = BitmapFactory.decodeFile(misProductos.getFoto3());
+            img3.setImageBitmap(bitmap3);*/
         } catch (Exception e) {
             Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
