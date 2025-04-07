@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--Permiso para tomar fotos de la galeria-->
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -23,11 +20,10 @@
         android:theme="@style/Theme.MiPrimerAplicacion"
         tools:targetApi="31">
 
-        <!--Esta ventana se abrira al precionar un boton-->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <!--Esta ventana se abrira al iniciar la aplicacion-->
+
         <activity
             android:name=".lista_productos"
             android:exported="true">
@@ -37,10 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
         <provider
             android:authorities="com.alexis.miprimeraplicacion.fileprovider"
             android:name="androidx.core.content.FileProvider"

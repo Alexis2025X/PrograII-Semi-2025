@@ -26,7 +26,7 @@ public class obtenerDatosServidor extends AsyncTask<String, String, String> {
 
             InputStream inputStream = new BufferedInputStream(httpURLConnection.getInputStream());
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//credemcialesCodificadas
+
             String linea;
             while((linea = bufferedReader.readLine()) != null){
                 respuesta.append(linea);

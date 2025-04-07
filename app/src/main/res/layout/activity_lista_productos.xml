@@ -8,7 +8,7 @@
     tools:context=".lista_productos">
 
     <EditText
-        android:id="@+id/txtBuscarAmigos"
+        android:id="@+id/txtBuscarProductos"
         android:hint="Buscar amigos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -19,7 +19,7 @@
         android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAgregarAmigo"
+        android:id="@+id/fabAgregarProductos"
         android:src="@android:drawable/ic_input_add"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"

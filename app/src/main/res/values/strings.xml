@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Agenda Amigos</string>
+    <string name="app_name">Tienda Online</string>
     <!--El name nos servira para llamarlo en el XML-->
 
 </resources>
