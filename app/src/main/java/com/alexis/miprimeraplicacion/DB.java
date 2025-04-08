@@ -11,6 +11,7 @@ public class DB extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 32;
     private static final String SQLdb = "CREATE TABLE productos (idProducto TEXT, codigo TEXT, descripcion TEXT, marca TEXT, presentacion TEXT,precio TEXT, urlFoto TEXT)";
     public DB(Context context) {
+
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
