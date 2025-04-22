@@ -74,6 +74,31 @@
           android:textColor="@color/textoBase"
           android:textColorHint="@color/textoBase" />
 
+    <TextView
+        android:id="@+id/lblCosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMarca"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/lblPrecio"
+        android:text="Costo"
+        android:textColor="@color/textoEncabezado"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/txtCosto"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMarca"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/txtPrecio"
+        android:hint="4.00"
+        android:textColor="@color/textoBase"
+        android:textColorHint="@color/textoBase" />
+
       <TextView
           android:id="@+id/lblMarca"
           android:layout_width="wrap_content"
@@ -96,6 +121,29 @@
           android:hint="Coca Cola"
           android:textColor="@color/textoBase"
           android:textColorHint="@color/textoBase" />
+
+    <TextView
+        android:id="@+id/lblStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPrecio"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Stock"
+        android:textColor="@color/textoEncabezado"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/txtStock"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPrecio"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="20dp"
+        android:hint="7"
+        android:textColor="@color/textoBase"
+        android:textColorHint="@color/textoBase" />
 
       <EditText
           android:id="@+id/txtPresentacion"

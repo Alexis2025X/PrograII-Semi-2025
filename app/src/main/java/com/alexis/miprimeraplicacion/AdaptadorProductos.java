@@ -46,7 +46,7 @@ public class AdaptadorProductos extends BaseAdapter {
         try {
             misProductos = alAmigos.get(position);
 
-            TextView tempVal = itemView.findViewById(R.id.lblCodigoAdaptador);
+            TextView tempVal = itemView.findViewById(R.id.lblcodigoAdaptador);
             tempVal.setText(misProductos.getcodigo());
 
             tempVal = itemView.findViewById(R.id.lblDescripcionAdaptador);
@@ -60,6 +60,16 @@ public class AdaptadorProductos extends BaseAdapter {
 
             tempVal = itemView.findViewById(R.id.lblPresentacionAdaptador);
             tempVal.setText(misProductos.getpresentacion());
+
+            tempVal = itemView.findViewById(R.id.lblCostoAdaptador);
+            tempVal.setText(misProductos.getCosto());
+
+            tempVal = itemView.findViewById(R.id.lblStockAdaptador);
+            tempVal.setText(misProductos.getStock());
+
+            tempVal = itemView.findViewById(R.id.lblGananciaAdaptador);
+            String ganancia = String.valueOf(Double.parseDouble(misProductos.getprecio()) - Double.parseDouble(misProductos.getCosto()));
+            tempVal.setText(ganancia);
 
             ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
             Bitmap bitmap = BitmapFactory.decodeFile(misProductos.getFoto());

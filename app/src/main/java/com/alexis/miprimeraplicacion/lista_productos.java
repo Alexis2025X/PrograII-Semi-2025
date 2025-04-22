@@ -238,6 +238,8 @@ public class lista_productos extends Activity {
 
                     jsonObject.put("foto1", cproductos.getString(7));
                     jsonObject.put("foto2", cproductos.getString(8));
+                    jsonObject.put("costo", cproductos.getString(9));
+                    jsonObject.put("stock", cproductos.getString(10));
 
                     jsonArray.put(jsonObject);
                 } while (cproductos.moveToNext());
@@ -298,6 +300,8 @@ public class lista_productos extends Activity {
                             jsonObject.getString("presentacion"),
                             jsonObject.getString("precio"),
                             jsonObject.getString("foto"),
+                            jsonObject.getString("costo"),
+                            jsonObject.getString("stock"),
                             jsonObject.getString("foto1"),
                             jsonObject.getString("foto2")
 
@@ -408,6 +412,8 @@ public class lista_productos extends Activity {
                 datosProductos.put("presentacion", jsonObject.getString("presentacion"));
                 datosProductos.put("precio", jsonObject.getString("precio"));
                 datosProductos.put("foto", jsonObject.getString("foto"));
+                datosProductos.put("costo", jsonObject.getString("costo"));
+                datosProductos.put("stock", jsonObject.getString("stock"));
                 datosProductos.put("foto1", jsonObject.getString("foto1"));
                 datosProductos.put("foto2", jsonObject.getString("foto2"));
 
@@ -450,12 +456,14 @@ public class lista_productos extends Activity {
                     String foto = jsonArray.getJSONObject(i).getJSONObject("value").getString("foto");
                     String foto1 = jsonArray.getJSONObject(i).getJSONObject("value").getString("foto1");
                     String foto2 = jsonArray.getJSONObject(i).getJSONObject("value").getString("foto2");
+                    String costo = jsonArray.getJSONObject(i).getJSONObject("value").getString("costo");
+                    String stock = jsonArray.getJSONObject(i).getJSONObject("value").getString("stock");
 
                     for (int index = 0; index < jsonArrayAuxiliar.length()-1; index++) {
                         jsonObjectAuxiliar = jsonArrayAuxiliar.getJSONObject(index);
 
                         if (jsonArray.getJSONObject(i).getJSONObject("value").getString("id") != jsonObjectAuxiliar.getString("idProducto")){
-                            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, foto,foto1,foto2};
+                            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, foto,costo,stock,foto1,foto2};
                             String respuesta = db.administrar_productos("nuevo", datos);
                         }
                     }

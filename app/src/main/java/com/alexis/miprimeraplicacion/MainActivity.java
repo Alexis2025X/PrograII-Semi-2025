@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         btnSiguiente.setOnClickListener(view -> siguienteClick());
 
         txtPosition = findViewById(R.id.lblPosicion);
-
+        posicionImg = 0;
         mostrarDatos();
         tomarFoto();
 
@@ -245,6 +245,12 @@ public class MainActivity extends AppCompatActivity {
             tempVal = findViewById(R.id.txtPrecio);
             String precio = tempVal.getText().toString();
 
+            tempVal = findViewById(R.id.txtCosto);
+            String costo = tempVal.getText().toString();
+
+            tempVal = findViewById(R.id.txtStock);
+            String stock = tempVal.getText().toString();
+
             JSONObject datosProductos = new JSONObject();
 
             di = new detectarInternet(this);
@@ -267,6 +273,8 @@ public class MainActivity extends AppCompatActivity {
             datosProductos.put("foto", urlCompletaFoto);
             datosProductos.put("foto1", urlCompletaFoto1);
             datosProductos.put("foto2", urlCompletaFoto2);
+            datosProductos.put("costo", costo);
+            datosProductos.put("stock", stock);
 
             di = new detectarInternet(this);
             if(di.hayConexionInternet()) {//online
@@ -286,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
                 String res1 =   db.administrarActualizados("nuevo", "verdadero",idProducto);
 
             }
-            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto, urlCompletaFoto1, urlCompletaFoto2};
+            String[] datos = {idProducto, codigo, descripcion, marca, presentacion, precio, urlCompletaFoto,costo,stock, urlCompletaFoto1, urlCompletaFoto2};
             String respuesta = db.administrar_productos(accion, datos);
 
             Toast.makeText(getApplicationContext(), "estado de registro ." + respuesta, Toast.LENGTH_LONG).show();
