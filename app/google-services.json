@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "710263494915",
+    "firebase_url": "https://miwhatsappnotificacionespush-default-rtdb.firebaseio.com",
+    "project_id": "miwhatsappnotificacionespush",
+    "storage_bucket": "miwhatsappnotificacionespush.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710263494915:android:28000e20984f0bff5f3136",
+        "android_client_info": {
+          "package_name": "com.alexis.miprimeraplicacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGebotJGainQCKOlZL_y_K8yGCfMX0kxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

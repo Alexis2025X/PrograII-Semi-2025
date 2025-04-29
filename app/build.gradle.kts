@@ -40,4 +40,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation(platform("com.google. firebase: firebase-bom:33.13.0"))
+    implementation(platform("com.google. firebase: firebase-database"))
+    implementation (platform("com.google. firebase : firebase-messaging"))
+    implementation(platform("com.google. firebase: firebase-storage"))
+    implementation(platform("com. firebasevi: firebase-vi-storage:9.8.8"))
 }
