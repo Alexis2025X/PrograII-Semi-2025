@@ -2,12 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,14 +20,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiPrimerAplicacion"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <!--Esta ventana se abrira al precionar un boton-->
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <!--Esta ventana se abrira al iniciar la aplicacion-->
         <activity
             android:name=".lista_amigos"
+            android:exported="false" />
+        <!-- Esta ventana se abrira al precionar un boton -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" /> <!-- Esta ventana se abrira al iniciar la aplicacion -->
+        <activity
+            android:name=".registro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,9 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.alexis.miprimeraplicacion.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.alexis.miprimeraplicacion.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
