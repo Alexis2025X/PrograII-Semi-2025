@@ -191,7 +191,8 @@ public class lista_amigos extends Activity {
                             jsonObject.getString("telefono"),
                             jsonObject.getString("email"),
                             jsonObject.getString("dui"),
-                            jsonObject.getString("urlFoto")
+                            jsonObject.getString("urlFoto"),
+                            jsonObject.getString("miToken")
                     );
                     alAmigos.add(misAmigos);
                 }

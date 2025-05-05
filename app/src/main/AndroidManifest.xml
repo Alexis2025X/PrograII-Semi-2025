@@ -27,10 +27,10 @@
             android:exported="false" />
         <!-- Esta ventana se abrira al precionar un boton -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true" /> <!-- Esta ventana se abrira al iniciar la aplicacion -->
-        <activity
             android:name=".registro"
+            android:exported="false" /> <!-- Esta ventana se abrira al iniciar la aplicacion -->
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
