@@ -44,7 +44,7 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
     implementation("com.google.firebase:firebase-database")
-    implementation ("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-storage")
-    implementation("com. firebasevi: firebase-vi-storage:9.8.8")
+    implementation("com.firebaseui:firebase-ui-storage:9.0.0")
 }

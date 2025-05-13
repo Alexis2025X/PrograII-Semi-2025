@@ -1,6 +1,5 @@
 package com.alexis.miprimeraplicacion;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -25,6 +24,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,12 +43,13 @@ public class lista_amigos extends Activity {
     DB db;
     final ArrayList<amigos> alAmigos = new ArrayList<amigos>();
     final ArrayList<amigos> alAmigosCopia = new ArrayList<amigos>();
-    JSONArray jsonArray;
+    JSONArray jsonArray = new JSONArray();
     JSONObject jsonObject;
     amigos misAmigos;
     FloatingActionButton fab;
     int posicion = 0;
-    obtenerDatosServidor datosServidor;
+    DatabaseReference databaseReference;
+    String miToken = "";
     detectarInternet di;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,6 @@ public class lista_amigos extends Activity {
         setContentView(R.layout.activity_lista_amigos);
 
         parametros.putString("accion", "nuevo");
-        db = new DB(this);
 
         fab = findViewById(R.id.fabAgregarAmigo);
         fab.setOnClickListener(view -> abriVentana());
@@ -68,7 +73,7 @@ public class lista_amigos extends Activity {
             posicion = info.position;
             menu.setHeaderTitle(jsonArray.getJSONObject(posicion).getJSONObject("value").getString("nombre"));
         } catch (Exception e) {
-            mostrarMsg("Error: " + e.getMessage());
+            mostrarMsg("Error crear el menu: " + e.getMessage());
         }
     }
     @Override
@@ -85,40 +90,40 @@ public class lista_amigos extends Activity {
             }
             return true;
         }catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
+            mostrarMsg("Error al mostrar el menu: " + e.getMessage());
             return super.onContextItemSelected(item);
         }
     }
     private void eliminarAmigo(){
         try{
-            di = new detectarInternet(this);
-            if(di.hayConexionInternet()){//online
-                JSONObject datosAmigos = new JSONObject();
-                String _id = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("_id");
-                String _rev = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("_rev");
-                String url = utilidades.url_mto + "/" + _id + "?rev=" + _rev;
-                enviarDatosServidor objEnviarDatosServidor = new enviarDatosServidor(this);
-                String respuesta = objEnviarDatosServidor.execute(datosAmigos.toString(), "DELETE", url).get();
-                JSONObject respuestaJSON = new JSONObject(respuesta);
-                if(!respuestaJSON.getBoolean("ok")) {
-                    mostrarMsg("Error: " + respuesta);
-                }
-            }
             String nombre = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("nombre");
             AlertDialog.Builder confirmacion = new AlertDialog.Builder(this);
             confirmacion.setTitle("Esta seguro de eliminar a: ");
             confirmacion.setMessage(nombre);
             confirmacion.setPositiveButton("Si", (dialog, which) -> {
                 try {
+                    di = new detectarInternet(this);
+                    if(di.hayConexionInternet()){//online
+                        JSONObject datosAmigos = new JSONObject();
+                        String _id = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("_id");
+                        String _rev = jsonArray.getJSONObject(posicion).getJSONObject("value").getString("_rev");
+                        String url = utilidades.url_mto + "/" + _id + "?rev=" + _rev;
+                        enviarDatosServidor objEnviarDatosServidor = new enviarDatosServidor(this);
+                        String respuesta = objEnviarDatosServidor.execute(datosAmigos.toString(), "DELETE", url).get();
+                        JSONObject respuestaJSON = new JSONObject(respuesta);
+                        if(!respuestaJSON.getBoolean("ok")) {
+                            mostrarMsg("Error al intentar eliminar: " + respuesta);
+                        }
+                    }
                     String respuesta = db.administrar_amigos("eliminar", new String[]{jsonArray.getJSONObject(posicion).getJSONObject("value").getString("idAmigo")});
                     if(respuesta.equals("ok")) {
                         listarDatos();
                         mostrarMsg("Registro eliminado con exito");
                     }else{
-                        mostrarMsg("Error: " + respuesta);
+                        mostrarMsg("Error al eliminar: " + respuesta);
                     }
                 }catch (Exception e){
-                    mostrarMsg("Error: " + e.getMessage());
+                    mostrarMsg("Error en eliminar: " + e.getMessage());
                 }
             });
             confirmacion.setNegativeButton("No", (dialog, which) -> {
@@ -126,7 +131,7 @@ public class lista_amigos extends Activity {
             });
             confirmacion.create().show();
         }catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
+            mostrarMsg("Error eliminar: " + e.getMessage());
         }
     }
     private void abriVentana(){
@@ -136,43 +141,65 @@ public class lista_amigos extends Activity {
     }
     private void listarDatos(){
         try{
-            di = new detectarInternet(this);
-            if(di.hayConexionInternet()){//online
-                datosServidor = new obtenerDatosServidor();
-                String respuesta = datosServidor.execute().get();
-                jsonObject = new JSONObject(respuesta);
-                jsonArray = jsonObject.getJSONArray("rows");
-                mostrarDatosAmigos();
-            }else{//offline
-                obtenerDatosAmigos();
-            }
+            databaseReference  = FirebaseDatabase.getInstance().getReference("amigos");
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(tarea->{
+                if(!tarea.isSuccessful()){
+                    mostrarMsg("Error al obtener token: "+tarea.getException().getMessage());
+                    return;
+                }else{
+                    miToken = tarea.getResult();
+                    if( miToken!=null && miToken.length()>0 ){
+                        databaseReference.orderByChild("miToken").equalTo(miToken).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                try{
+                                    if( snapshot.getChildrenCount()<=0 ){
+                                        mostrarMsg("No hay amigos registrados.");
+                                        parametros.putString("accion", "nuevo");
+                                        abriVentana();
+                                    }
+                                }catch (Exception e){
+                                    mostrarMsg("Error al llamar la ventana: " + e.getMessage());
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                mostrarMsg("Error se cancelo: " + error.getMessage());
+                            }
+                        });
+                    }
+                }
+            });
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    try{
+                        for( DataSnapshot dataSnapshot : snapshot.getChildren() ){
+                            amigos amigo = dataSnapshot.getValue(amigos.class);
+                            jsonObject = new JSONObject();
+                            jsonObject.put("idAmigo", amigo.getIdAmigo());
+                            jsonObject.put("nombre", amigo.getNombre());
+                            jsonObject.put("direccion", amigo.getDireccion());
+                            jsonObject.put("telefono", amigo.getTelefono());
+                            jsonObject.put("email", amigo.getEmail());
+                            jsonObject.put("dui", amigo.getDui());
+                            jsonObject.put("urlFoto", amigo.getFoto());
+                            jsonObject.put("miToken", amigo.getMiToken());
+
+                            jsonArray.put(jsonObject);
+                        }
+                        mostrarDatosAmigos();
+                    }catch (Exception e){
+                        mostrarMsg("Error al escuchar evento de firebase: " + e.getMessage());
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
-        }
-    }
-    private void obtenerDatosAmigos(){
-        try{
-            cAmigos = db.lista_amigos();
-            if(cAmigos.moveToFirst()){
-                jsonArray = new JSONArray();
-                do{
-                    jsonObject = new JSONObject();
-                    jsonObject.put("idAmigo", cAmigos.getString(0));
-                    jsonObject.put("nombre", cAmigos.getString(1));
-                    jsonObject.put("direccion", cAmigos.getString(2));
-                    jsonObject.put("telefono", cAmigos.getString(3));
-                    jsonObject.put("email", cAmigos.getString(4));
-                    jsonObject.put("dui", cAmigos.getString(5));
-                    jsonObject.put("foto", cAmigos.getString(6));
-                    jsonArray.put(jsonObject);
-                }while(cAmigos.moveToNext());
-                mostrarDatosAmigos();
-            }else{
-                mostrarMsg("No hay amigos registrados.");
-                abriVentana();
-            }
-        }catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
+            mostrarMsg("Error al listar datos: " + e.getMessage());
         }
     }
     private void mostrarDatosAmigos(){
@@ -183,7 +210,7 @@ public class lista_amigos extends Activity {
                 alAmigosCopia.clear();
 
                 for (int i=0; i<jsonArray.length(); i++){
-                    jsonObject = jsonArray.getJSONObject(i).getJSONObject("value");
+                    jsonObject = jsonArray.getJSONObject(i);
                     misAmigos = new amigos(
                             jsonObject.getString("idAmigo"),
                             jsonObject.getString("nombre"),
@@ -192,6 +219,7 @@ public class lista_amigos extends Activity {
                             jsonObject.getString("email"),
                             jsonObject.getString("dui"),
                             jsonObject.getString("urlFoto"),
+                            jsonObject.getString("urlCompletaFotoFirestore"),
                             jsonObject.getString("miToken")
                     );
                     alAmigos.add(misAmigos);
@@ -204,7 +232,7 @@ public class lista_amigos extends Activity {
                 abriVentana();
             }
         }catch (Exception e){
-            mostrarMsg("Error: " + e.getMessage());
+            mostrarMsg("Error al mostrar: " + e.getMessage());
         }
     }
     private void buscarAmigos(){
