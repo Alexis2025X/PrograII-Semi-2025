@@ -30,6 +30,9 @@
             android:name=".registro"
             android:exported="false" /> <!-- Esta ventana se abrira al iniciar la aplicacion -->
         <activity
+            android:name=".chats"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     tomarFotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriFotoAimgo);
                     startActivityForResult(tomarFotoIntent, 1);
                 }else{
-                    mostrarMsg("Nose pudo crear la imagen.");
+                    mostrarMsg("No se pudo crear la imagen.");
                 }
             }catch (Exception e){
                 mostrarMsg("Error al tomar foto: "+e.getMessage());
