@@ -5,7 +5,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+
 public class DB extends SQLiteOpenHelper {
+    /*public void deleteOldDatabases(Context context) {
+        String[] oldDatabases = {"productos"};
+
+        for (String dbName : oldDatabases) {
+            context.deleteDatabase(dbName);
+            File dbFile = context.getDatabasePath(dbName);
+            if (dbFile.exists()) {
+                dbFile.delete();
+            }
+        }
+    }*/
     private static final String DATABASE_NAME = "amigos";
     private static final int DATABASE_VERSION = 1;
     private static final String SQLdb = "CREATE TABLE amigos (idAmigo TEXT, nombre TEXT, direccion TEXT, telefono TEXT, email TEXT, dui TEXT, urlFoto TEXT, miToken TEXT)";
@@ -30,7 +43,7 @@ public class DB extends SQLiteOpenHelper {
                     sql = "INSERT INTO amigos (nombre, direccion, telefono, email, dui, urlFoto, miToken) VALUES ('"+ datos[1] +"', '" + datos[2] + "', '" + datos[3] + "', '" + datos[4] + "', '" + datos[5] + "', '" + datos[6] + "', '" + datos[7] + "')";
                     break;
                 case "modificar":
-                    sql = "UPDATE amigos SET nombre = '" + datos[1] + "', direccion = '" + datos[2] + "', telefono = '" + datos[3] + "', email = '" + datos[4] + "', dui = '" + datos[5] + "', urlFoto = '" + datos[6] + "', miToken = '" + datos[7] + "' WHERE idAmigo = '" + datos[0] + "'";
+                    sql = "UPDATE amigos SET nombre = '" + datos[1] + "', direccion = '" + datos[2] + "', telefono = '" + datos[3] + "', email = '" + datos[4] + "', dui = '" + datos[5] + "', urlFoto = '" + datos[6] + "' WHERE idAmigo = '" + datos[0] + "'";
                     break;
                 case "eliminar":
                     sql = "DELETE FROM amigos WHERE idAmigo = '" + datos[0] + "'";

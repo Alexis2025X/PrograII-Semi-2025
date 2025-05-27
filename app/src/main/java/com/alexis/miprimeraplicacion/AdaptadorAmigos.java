@@ -24,25 +24,21 @@ public class AdaptadorAmigos extends BaseAdapter {
         this.alAmigos = alAmigos;
     }
 
-    //Cuenta el array de amigos y da su cantidad de valores
     @Override
     public int getCount() {
         return alAmigos.size();
     }
 
-    //Obtiene el objeto de la posicion del array y su posicion
     @Override
     public Object getItem(int position) {
         return alAmigos.get(position);
     }
 
-    //Obtiene el id del objeto de la posicion del array
     @Override
     public long getItemId(int position) {
         return 0;
     }
 
-    //Obtiene la vista de la posicion del array
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,7 +54,6 @@ public class AdaptadorAmigos extends BaseAdapter {
 
             tempVal = itemView.findViewById(R.id.lblEmailAdaptador);
             tempVal.setText(misAmigos.getEmail());
-
 
             ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
             Bitmap bitmap = BitmapFactory.decodeFile(misAmigos.getFoto());

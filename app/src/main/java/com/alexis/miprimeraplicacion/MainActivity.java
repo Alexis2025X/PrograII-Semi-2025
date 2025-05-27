@@ -37,6 +37,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     Button btn;
+/*    DB db;*/
     TextView tempVal;
     String accion = "nuevo", idAmigo = "", id="", rev="";
     ImageView img;
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         mostrarDatos();
         tomarFoto();
+/*        db = new DB(this);
+        db.deleteOldDatabases(this);*/
     }
 /*    private void subirFotoFirestore(){
         mostrarMsg("Subiendo foto a firestore");
@@ -121,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
                 urlCompletaFoto = datos.getString("urlFoto");
                 img.setImageURI(Uri.parse(urlCompletaFoto));
+
+
             }else {
                 //idAmigo = ;
             }

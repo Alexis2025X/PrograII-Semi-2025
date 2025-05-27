@@ -65,9 +65,9 @@ public class lista_amigos extends Activity {
         buscarAmigos();
         mostrarChats();
     }
-    private void mostrarChats() {
-        ltsAmigos.setOnItemClickListener((parent, view, position, id) -> {
-            try {
+    private void mostrarChats(){
+        ltsAmigos.setOnItemClickListener( (parent, view, position, id)->{
+            try{
                 Bundle parametros = new Bundle();
                 parametros.putString("nombre", jsonArray.getJSONObject(position).getString("nombre"));
                 parametros.putString("to", jsonArray.getJSONObject(position).getString("to"));
@@ -78,7 +78,7 @@ public class lista_amigos extends Activity {
                 Intent intent = new Intent(getApplicationContext(), chats.class);
                 intent.putExtras(parametros);
                 startActivity(intent);
-            } catch (Exception e) {
+            }catch (Exception e){
                 mostrarMsg("Error al abrir el chat: " + e.getMessage());
             }
         });
@@ -159,7 +159,7 @@ public class lista_amigos extends Activity {
         intent.putExtras(parametros);
         startActivity(intent);
     }
-    private void listarDatos(){
+    private void listarDatos(){//Error al mostrar datos
         try{
             databaseReference  = FirebaseDatabase.getInstance().getReference("amigos");
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(tarea->{
@@ -189,13 +189,16 @@ public class lista_amigos extends Activity {
                         });
                     }
                 }
+
             });
+
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     try{
                         for( DataSnapshot dataSnapshot : snapshot.getChildren() ){
                             amigos amigo = dataSnapshot.getValue(amigos.class);
+
                             jsonObject = new JSONObject();
                             jsonObject.put("idAmigo", amigo.getIdAmigo());
                             jsonObject.put("nombre", amigo.getNombre());
@@ -207,7 +210,6 @@ public class lista_amigos extends Activity {
                             jsonObject.put("urlCompletaFotoFirestore", amigo.getUrlCompletaFotoFirestore());
                             jsonObject.put("to", amigo.getToken());
                             jsonObject.put("from", miToken);
-
                             jsonArray.put(jsonObject);
                         }
                         mostrarDatosAmigos();
@@ -221,8 +223,16 @@ public class lista_amigos extends Activity {
                 }
             });
         }catch (Exception e){
+
             mostrarMsg("Error al listar datos: " + e.getMessage());
         }
+    }
+    private void mostrarMsgAlert(String msg){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle("Atencion");
+        alerta.setMessage(msg);
+        alerta.setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss());
+        alerta.create().show();
     }
     private void mostrarDatosAmigos(){
         try{
