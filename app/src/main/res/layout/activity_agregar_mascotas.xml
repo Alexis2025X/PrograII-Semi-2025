@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    android:padding="20dp"
+    tools:context=".agregar_citas">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CvCitas"
+        android:layout_width="400dp"
+        android:layout_height="530dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FFB222"
+        app:cardCornerRadius="@android:dimen/app_icon_size">
+
+    <TextView
+        android:id="@+id/lblTituloMascotas"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/color_menu"
+        android:gravity="center_horizontal"
+        android:text="Agregar mascotas"
+        android:textColor="@color/color_letras"
+        android:textSize="35sp" />
+
+    <ImageButton
+        android:id="@+id/imgFotoMascotaCita"
+        android:background="@color/color_fondo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="65dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginStart="135dp" />
+
+
+    <TextView
+        android:id="@+id/lblMascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgFotoMascotaCita"
+        android:layout_marginTop="180dp"
+        android:layout_marginStart="10dp"
+        android:text="Nombre: "
+        android:textSize="21sp" />
+
+    <EditText
+        android:id="@+id/txtNombreMascota"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="180dp"
+        android:layout_toEndOf="@+id/lblMascota"
+        android:hint="Nombre de la mascota"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <TextView
+            android:id="@+id/lblEdad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="235dp"
+            android:layout_marginStart="10dp"
+            android:text="Edad: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtEdad"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtNombreMascota"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="235dp"
+            android:layout_toEndOf="@+id/textView3"
+            android:hint="Edad de la macota"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+        <TextView
+            android:id="@+id/lblRaza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="290dp"
+            android:layout_marginStart="10dp"
+            android:text="Raza: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtRaza"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtEdad"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="290dp"
+            android:hint="Raza"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+        <TextView
+            android:id="@+id/lblProblemasMedicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRaza"
+            android:layout_marginTop="345dp"
+            android:layout_marginStart="10dp"
+            android:text="Problemas: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtProblemasMedicos"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRaza"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="345dp"
+            android:layout_marginStart="130dp"
+            android:hint="Problemas medicos"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+        <TextView
+            android:id="@+id/lblDueño"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtRaza"
+            android:layout_marginTop="400dp"
+            android:layout_marginStart="10dp"
+            android:text="Dueño: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtDueño"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtProblemasMedicos"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="400dp"
+            android:layout_marginStart="130dp"
+            android:hint="Dueño"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+        <Button
+            android:id="@+id/btnGuardarMascota"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDueño"
+            android:layout_marginTop="460dp"
+            android:layout_marginStart="35dp"
+            android:layout_centerHorizontal="true"
+            android:text="Guardar mascota"
+            android:backgroundTint="@color/color_btn"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabListaMascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_menu_revert" />
+</RelativeLayout>

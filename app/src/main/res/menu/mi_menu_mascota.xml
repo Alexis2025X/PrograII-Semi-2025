@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mnxNuevoMascota" android:title="Nuevo"/>
+    <item  android:id="@+id/mnxModificarMascota" android:title="Modificar"/>
+    <item  android:id="@+id/mnxEliminarMascota" android:title="Eliminar"/>
+</menu>

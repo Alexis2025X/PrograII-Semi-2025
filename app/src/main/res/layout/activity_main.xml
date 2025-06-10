@@ -2,83 +2,349 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_fondo"
     tools:context=".MainActivity">
 
-   <EditText
-       android:id="@+id/txtNombre"
-       android:hint="Nombre"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
 
-   <EditText
-       android:id="@+id/txtDireccion"
-       android:hint="Dirección"
-       android:layout_below="@+id/txtNombre"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
 
-   <EditText
-       android:id="@+id/txtTelefono"
-       android:hint="Telefono"
-       android:layout_below="@+id/txtDireccion"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
+       <RelativeLayout
+        android:id="@+id/layout_mascotas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:orientation="vertical"
+        android:visibility="visible">  <!--Vista inicial visible-->
 
-   <EditText
-       android:id="@+id/txtEmail"
-       android:hint="Email"
-       android:layout_below="@+id/txtTelefono"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/txtBuscarMascotas"
+            android:drawableEnd="@drawable/lupa"
+            android:hint="Buscar mascotas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
 
-   <EditText
-       android:id="@+id/txtDui"
-       android:hint="DUI"
-       android:layout_below="@+id/txtEmail"
-       android:layout_marginTop="20dp"
-       android:layout_marginLeft="20dp"
-       android:layout_marginRight="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
+           <ListView
+               android:id="@+id/ltsMascotas"
+               android:layout_below="@+id/txtBuscarMascotas"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"/>
+       </RelativeLayout>
+<!--   android:layout_marginTop="-100dp"-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarMascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/layout_mascotas"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_input_add"
+        android:visibility="visible"/>-->
 
-   <ImageButton
-       android:id="@+id/imgFotoAmigo"
-       android:layout_below="@id/txtDui"
-       android:layout_marginTop="20dp"
-       android:layout_centerHorizontal="true"
-       android:src="@mipmap/ic_launcher_round"
-       android:layout_width="100dp"
-       android:layout_height="100dp"/>
+    <RelativeLayout
+        android:id="@+id/layout_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:orientation="vertical"
+        android:visibility="gone">  <!-- Vista inicial visible -->
 
-   <Button
-       android:id="@+id/btnGuardarAmigo"
-       android:text="Guardar Amigo"
-       android:layout_below="@id/imgFotoAmigo"
-       android:layout_marginTop="20dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/txtBuscarChats"
+            android:drawableEnd="@drawable/lupa"
+            android:hint="Buscar chats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <ListView
+            android:id="@+id/ltsChat"
+            android:layout_below="@+id/txtBuscarChats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
-   <com.google.android.material.floatingactionbutton.FloatingActionButton
-       android:id="@+id/fabListaAmigos"
-       android:src="@android:drawable/ic_menu_revert"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentEnd="true"
-       android:layout_margin="20dp"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/layout_chat"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_input_add"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_citas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:orientation="vertical"
+        android:visibility="gone">  <!-- Vista inicial visible -->
+
+        <EditText
+            android:id="@+id/txtBuscarCitas"
+            android:drawableEnd="@drawable/lupa"
+            android:hint="Buscar citas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <ListView
+            android:id="@+id/ltsCitas"
+            android:layout_below="@+id/txtBuscarCitas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAgregarCitasMascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/layout_citas"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="55dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_input_add"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_veterinarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:orientation="vertical"
+        android:visibility="gone">  <!-- Vista inicial visible -->
+
+<!--        <TextView
+            android:id="@+id/lblUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi ubicación: Obteniendo ubicación... " />-->
+        <fragment
+            android:id="@+id/mapa"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            map:cameraZoom="10"
+            map:uiRotateGestures="true"
+            map:uiZoomGestures="true"
+            tools:context=".MainActivity"/>
+        <!--        map:uiScrollGestures="true"-->
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_cuenta"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:orientation="vertical"
+        android:visibility="gone">  <!-- Vista inicial visible -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CvCuenta"
+            android:layout_width="400dp"
+            android:layout_height="420dp"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="#FFB222"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="5dp"
+            app:cardCornerRadius="48dp">
+
+            <TextView
+                android:id="@+id/lblMiCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_menu"
+                android:gravity="center_horizontal"
+                android:text="Mi Cuenta"
+                android:textColor="@color/color_letras"
+                android:textSize="50sp" />
+            <TextView
+                android:id="@+id/lblUsuarioCuenta"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="140dp"
+                android:text="Usuario: "
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/txtUsuarioCuenta"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="140dp"
+                android:layout_marginStart="140dp"
+                android:hint="my_user"
+                android:maxLines="1"
+                android:enabled="false"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+            <!--android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"-->
+
+            <TextView
+                android:id="@+id/lblNombreCuenta"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="200dp"
+                android:text="Nombre: "
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/txtNombreCuenta"
+                android:layout_width="230dp"
+
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"
+                android:layout_marginStart="140dp"
+                android:hint="Mario"
+                android:enabled="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+            <!--android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"-->
+
+
+            <TextView
+                android:id="@+id/lblContraseñaCuenta"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="250dp"
+                android:text="Contraseña: "
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/txtContraseñaCuenta"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="250dp"
+                android:hint="********"
+                android:enabled="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+            <!--android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"-->
+
+            <TextView
+                android:id="@+id/lblEmailCuenta"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="300dp"
+                android:text="Email: "
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/txtEmailCuenta"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="300dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginBottom="30dp"
+                android:hint="mar@gmail.com"
+                android:maxLines="1"
+                android:enabled="false"
+                android:ellipsize="end"
+                android:singleLine="true"/>
+            <!--android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:ellipsize="end"-->
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnEditarCuenta"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CvCuenta"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/color_menu"
+            android:text="Editar cuenta"
+            android:textColor="@color/color_letras"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnEliminarCuenta"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CvCuenta"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/color_menu"
+            android:text="Eliminar cuenta"
+            android:textColor="@color/color_letras"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/btnEliminarCuenta"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="50dp"
+            android:text="Cerrar sesión"
+            android:backgroundTint="@color/color_menu"
+            android:textColor="@color/color_letras"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+<!--    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav" />-->
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_menu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        app:labelVisibilityMode="selected"
+        style="@style/BottomNavigation"/>
+
 </RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="91dp"
+        android:backgroundTint="@color/color_btn"
+        android:layout_marginEnd="120dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/imgFotoMascotaAdaptado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher_round" />
+
+
+
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/lblNombreMascotaAdaptador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mascota"
+            android:textSize="30dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginStart="50dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

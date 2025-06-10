@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    tools:context=".crear_cuenta">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="23dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/color_fondo"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/imglogo"
+            android:layout_width="152dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo2"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtTextoCrearCuenta"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="¡Crea tu cuenta en PetCare!"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/cvLogo"
+        android:layout_marginTop="10dp"/>
+
+
+    <EditText
+        android:id="@+id/txtNombreUser"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/etiquetadenombre"
+        android:layout_below="@+id/txtTextoCrearCuenta"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:hint="Nombre"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/user"
+        android:layout_below="@+id/txtNombreUser"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:hint="Usuario"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+    <!--android:scrollHorizontally="true"
+    android:singleLine="true"
+    android:ellipsize="end"-->
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/candado"
+        android:layout_below="@+id/txtUsuario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
+        android:hint="Contraseña"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+    <!--android:scrollHorizontally="true"
+    android:singleLine="true"
+    android:ellipsize="end"-->
+
+    <EditText
+        android:id="@+id/txtCorreo"
+        android:layout_width="362dp"
+        android:drawableStart="@drawable/correo"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
+        android:hint="Correo"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"/>
+    <!--android:scrollHorizontally="true"
+    android:singleLine="true"
+    android:ellipsize="end"-->
+
+
+
+    <Button
+        android:id="@+id/btnCrearCuenta"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtCorreo"
+        android:layout_marginTop="42dp"
+        android:layout_centerHorizontal="true"
+        android:text="Crear cuenta"
+        app:cardCornerRadius="150dp"
+        android:backgroundTint="@color/color_btn"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_menu_revert" />
+
+</RelativeLayout>

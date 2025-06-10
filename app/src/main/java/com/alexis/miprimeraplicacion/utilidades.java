@@ -8,7 +8,7 @@ public class utilidades {
     static String url_mto = "http://192.168.1.3:5984/agenda";
     //Usuario y contraseña de la base de datos en CouchDB (La cambie para subir cambios)
     static String user = "admin";
-    static String password = "HolaMundo2007!";
+    static String password = "??????";
     static String credencialesCodificadas = Base64.getEncoder().encodeToString((user + ":"+ password).getBytes());
     public String generarUnicoId(){
         return java.util.UUID.randomUUID().toString();

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    tools:context=".agregar_chat">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CvChats"
+        android:layout_width="400dp"
+        android:layout_height="530dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FFB222"
+        app:cardCornerRadius="@android:dimen/app_icon_size">
+
+        <TextView
+            android:id="@+id/lblTituloChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_menu"
+            android:gravity="center_horizontal"
+            android:text="Chats"
+            android:textColor="@color/color_letras"
+            android:textSize="50dp" />
+
+        <ImageButton
+            android:id="@+id/imgFotoMascotaChat"
+            android:background="@color/color_fondo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/lblChatMascota"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="200dp"
+            android:text="Nombre: "
+            android:textSize="21sp" />
+        <EditText
+            android:id="@+id/txtNombreChatMascota"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="130dp"
+            android:hint="Nombre"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+        <!--        <Spinner
+                    android:id="@+id/spnNombreMascota"
+                    android:layout_width="254dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginTop="207dp" />-->
+
+        <TextView
+            android:id="@+id/lblDirecion"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="250dp"
+            android:text="Direción: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtDireccion"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            android:layout_marginStart="130dp"
+            android:hint="Direción"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <TextView
+            android:id="@+id/lblTelefono"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="300dp"
+            android:text="Teléfono: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtTelefono"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
+            android:layout_marginStart="130dp"
+            android:hint="Teléfono "
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <TextView
+            android:id="@+id/lblEmail"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="350dp"
+            android:text="Email: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
+            android:layout_marginStart="130dp"
+            android:hint="Email"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+        <TextView
+            android:id="@+id/lblDui"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="400dp"
+            android:text="Dui: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtDui"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:layout_marginStart="130dp"
+            android:hint="Dui"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <Button
+            android:id="@+id/btnGuardarChat"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNota"
+            android:layout_marginTop="460dp"
+            android:layout_centerHorizontal="true"
+            android:text="Guardar chat"
+            android:backgroundTint="@color/color_btn"
+            android:textColor="@color/black"
+            android:layout_marginStart="50dp"
+            android:textSize="20sp"
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabListaChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_menu_revert" />
+
+</RelativeLayout>

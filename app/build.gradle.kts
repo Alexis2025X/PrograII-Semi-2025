@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -29,6 +31,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -37,13 +42,20 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    //implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(platform("com.google. firebase: firebase-bom:33.13.0"))
-    implementation(platform("com.google. firebase: firebase-database"))
-    implementation (platform("com.google. firebase : firebase-messaging"))
-    implementation(platform("com.google. firebase: firebase-storage"))
-    implementation(platform("com. firebasevi: firebase-vi-storage:9.8.8"))
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("com.firebaseui:firebase-ui-storage:9.0.0")
+
+    implementation("com.google.android.gms:play-services-location:20.0.0")
+    //No estoy seguro si las usare
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-places:17.0.0")
+    implementation("com.google.android.libraries.places:places:3.3.0")
 }

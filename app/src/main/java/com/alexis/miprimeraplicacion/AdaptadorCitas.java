@@ -13,27 +13,27 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AdaptadorAmigos extends BaseAdapter {
+public class AdaptadorCitas extends BaseAdapter {
     Context context;
-    ArrayList<amigos> alAmigos;
-    amigos misAmigos;
+    ArrayList<citas> alCitas;
+    citas misCitas;
     LayoutInflater inflater;
 
-    public AdaptadorAmigos(Context context, ArrayList<amigos> alAmigos) {
+    public AdaptadorCitas(Context context, ArrayList<citas> alCitas) {
         this.context = context;
-        this.alAmigos = alAmigos;
+        this.alCitas = alCitas;
     }
 
     //Cuenta el array de amigos y da su cantidad de valores
     @Override
     public int getCount() {
-        return alAmigos.size();
+        return alCitas.size();
     }
 
     //Obtiene el objeto de la posicion del array y su posicion
     @Override
     public Object getItem(int position) {
-        return alAmigos.get(position);
+        return alCitas.get(position);
     }
 
     //Obtiene el id del objeto de la posicion del array
@@ -46,22 +46,24 @@ public class AdaptadorAmigos extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.fotos, parent, false);
+        View itemView = inflater.inflate(R.layout.vista_citas, parent, false);
         try {
-            misAmigos = alAmigos.get(position);
+            misCitas = alCitas.get(position);
 
-            TextView tempVal = itemView.findViewById(R.id.lblNombreAdaptador);
-            tempVal.setText(misAmigos.getNombre());
+            TextView tempVal = itemView.findViewById(R.id.lblNombreCitaAdaptador);
+            tempVal.setText("Control de " + misCitas.getnombreMascota());
 
-            tempVal = itemView.findViewById(R.id.lblTelefonoAdaptador);
-            tempVal.setText(misAmigos.getTelefono());
+            tempVal = itemView.findViewById(R.id.lblFechaAdaptador);
+            tempVal.setText(misCitas.getfecha());
 
-            tempVal = itemView.findViewById(R.id.lblEmailAdaptador);
-            tempVal.setText(misAmigos.getEmail());
+            tempVal = itemView.findViewById(R.id.lblClinicaAdaptador);
+            tempVal.setText(misCitas.getclinica());
 
+            tempVal = itemView.findViewById(R.id.lblNotaAdaptador);
+            tempVal.setText(misCitas.getnota());
 
             ImageView img = itemView.findViewById(R.id.imgFotoAdaptador);
-            Bitmap bitmap = BitmapFactory.decodeFile(misAmigos.getFoto());
+            Bitmap bitmap = BitmapFactory.decodeFile(misCitas.getFoto());
             img.setImageBitmap(bitmap);
         } catch (Exception e) {
             Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();

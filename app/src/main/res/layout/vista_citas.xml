@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CvCitas"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#fac814"
+        app:cardCornerRadius="40dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="150dp"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/imgFotoAdaptador"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_round"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/lblNombreCitaAdaptador"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:text="Control de Roky"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+<!--        <TextView
+            android:id="@+id/lblNombreCitaAdaptador"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="150dp"
+            android:text="Roky"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />-->
+
+    <TextView
+        android:id="@+id/lblFecha"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="80dp"
+        android:text="Fecha:"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lblFechaAdaptador"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="125dp"
+            android:text="11/05/2025"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/lblClinica"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="80dp"
+        android:text="Clinica:"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lblClinicaAdaptador"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="130dp"
+            android:text="Clinica Veterinaria"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/lblNota"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="80dp"
+            android:text="Nota:"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lblNotaAdaptador"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="120dp"
+            android:text="........"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Agenda Amigos</string>
-    <!--El name nos servira para llamarlo en el XML-->
-
+    <string name="app_name">PetCare</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

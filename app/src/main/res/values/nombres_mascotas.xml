@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <array name="citas_mascotas">
+        <item>Seleccione una mascota</item>
+
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Hamster</item>
+        <item>Otro</item>
+    </array>
+</resources>

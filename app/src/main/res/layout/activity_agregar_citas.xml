@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fondo"
+    tools:context=".agregar_citas">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CvCitas"
+        android:layout_width="400dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FFB222"
+        app:cardCornerRadius="@android:dimen/app_icon_size">
+
+        <ImageButton
+            android:id="@+id/imgFotoMascotaCita"
+            android:background="@color/color_fondo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="150dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/lblTituloCitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_menu"
+            android:gravity="center_horizontal"
+            android:text="Citas"
+            android:textColor="@color/color_letras"
+            android:textSize="50dp" />
+
+
+
+<!--        <TextView
+            android:id="@+id/lblCitas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="90dp"
+            android:text="Control de mascotas"
+            android:textSize="21sp" />-->
+        <TextView
+            android:id="@+id/lblCitaMascota"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="200dp"
+            android:text="Nombre: "
+            android:textSize="21sp" />
+        <Spinner
+            android:id="@+id/spnNombresCitaMascota"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="130dp"
+            />
+<!--        <EditText
+            android:id="@+id/txtNombreCitaMascota"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="130dp"
+            android:hint="Nombre de la mascota"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>-->
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+<!--        <Spinner
+            android:id="@+id/spnNombreMascota"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="207dp" />-->
+
+        <TextView
+            android:id="@+id/lblFecha"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="250dp"
+            android:text="Fecha: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtFecha"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            android:layout_marginStart="130dp"
+            android:hint="Fecha de consulta"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <TextView
+            android:id="@+id/lblClinica"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="300dp"
+            android:text="Clinica: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtNombreClinica"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
+            android:layout_marginStart="130dp"
+            android:hint="Nombre de la clinica"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+
+        <TextView
+            android:id="@+id/lblNota"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="350dp"
+            android:text="Notas: "
+            android:textSize="21sp" />
+
+        <EditText
+            android:id="@+id/txtNota"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
+            android:layout_marginStart="130dp"
+            android:hint="Detalles de la consulta"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+        <!--android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="end"-->
+
+
+        <Button
+            android:id="@+id/btnGuardarCita"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNota"
+            android:layout_marginTop="410dp"
+            android:layout_centerHorizontal="true"
+            android:text="Guardar cita"
+            android:backgroundTint="@color/color_btn"
+            android:textColor="@color/black"
+            android:layout_marginStart="50dp"
+            android:textSize="20sp"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabListaCitasMascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@color/color_menu"
+        android:src="@android:drawable/ic_menu_revert" />
+
+</RelativeLayout>

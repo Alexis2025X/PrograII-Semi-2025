@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mascotasMenu"
+        android:icon="@drawable/mascotas"
+        android:title="Mascotas"/>
+    <item
+        android:id="@+id/chatMenu"
+        android:icon="@drawable/chat"
+        android:title="Chat"/>
+    <item
+        android:id="@+id/citasMenu"
+        android:icon="@drawable/citas"
+        android:title="Citas"/>
+    <item
+        android:id="@+id/veterinariosMenu"
+        android:icon="@drawable/veterinario"
+        android:title="Veterinarios"/>
+    <item
+        android:id="@+id/cuentaMenu"
+        android:icon="@drawable/cuenta"
+        android:title="Cuenta"/>
+</menu>
